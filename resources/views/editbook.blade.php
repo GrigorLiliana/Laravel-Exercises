@@ -8,11 +8,23 @@
 </head>
 <body>
 
-<form action="/updated" method="POST">
+<form method="POST">
+@csrf
 <input type="text" name="newTitle" value="{{$title}}">
 <input type="text" name="newAuthor" value="{{$author}}">
 <input type="submit" name="submit" value="Update">
 </form>
+@if(isset($_POST['submit']))
+@if($edit)
+<strong>Book sucessiful edited</strong>
+@else
+<strong>Please try again</strong>
+@endif
+@endif
+<div>
+<button><a href="/books">All books</a></button>
+<button><a href="/create">Insert a new book</a></button>
+</div>
 
 </body>
 </html>

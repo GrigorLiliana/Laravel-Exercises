@@ -9,16 +9,18 @@
 <body>
 
 <form  method="POST">
+@csrf
 <input type="text" name="createTitle" placeholder="Define a title">
 <input type="text" name="createAuthor" placeholder="Assigns an author">
 <input type="submit" name="submit">
 </form>
-@if(isset($_POST['submit'])):
+@if(isset($_POST['submit']))
 @if($query)
 <strong>Book sucessiful inserted</strong>
 @else
 <strong>Please try again</strong>
 @endif
 @endif
+<button><a href="/books">All books</a></button>
 </body>
 </html>

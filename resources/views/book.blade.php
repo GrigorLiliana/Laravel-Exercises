@@ -15,13 +15,16 @@
     <button>
     <a href="update/{{$value->id_book}}">Edit</a>
     </button>
+    
+    <button>
+    <a href="destroy/{{$value->id_book}}">Delete</a>
+    </button>
 
     @endforeach
 
     </ul>
 @endif
-
-
+<button><a href="/create">Insert a new book</a></button>
 
 </body>
 </html>

@@ -59,7 +59,8 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $results = DB::select('SELECT * FROM book WHERE id_book =' . $id);
+        return view('editbook', ['title' => $results[0]->title, 'author' => $results[0]->author]);
     }
 
     /**
@@ -71,7 +72,11 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $edit = DB::update("UPDATE book
+    SET title=?, author=?
+    WHERE id_book= $id", [$request->newTitle, $request->newAuthor]);
+
+    return view('editbook', ['edit'=> $edit, 'title'=>$request->newTitle, 'author'=>$request->newAuthor]);
     }
 
     /**
@@ -82,6 +87,7 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $destroy = DB::delete("DELETE FROM book WHERE id_book=$id");
+        return redirect('/books');
     }
 }

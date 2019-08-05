@@ -14,12 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/books', 'BookController@index');
 
 Route::get('/create', 'BookController@create');
 Route::post('/create', 'BookController@store');
 
 
+Route::get('/update/{id}', 'BookController@edit');
+Route::post('/update/{id}', 'BookController@update');
 
-Route::post('/updated', 'EditBook@updated');
-Route::get('/update/{id}', 'EditBook@update');
+Route::get('/destroy/{id}', 'BookController@destroy');
